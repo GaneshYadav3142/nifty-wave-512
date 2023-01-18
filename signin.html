@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <style>
+        body{
+            background-color: aqua;
+        }
+        .nav{
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            padding: 15px;
+        }
+        form{
+            width: 300px;
+            margin: auto;
+            margin-top: 150px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            padding: 40px;
+            border-radius: 10px;
+        }
+        input{
+            margin: 5px 0px;
+            width: 100%;
+        }
+        #login{
+          
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <button>Sign Up</button>
+        <button>Log In</button>
+    </div>
+    <form id="login">
+        <input type="email" required placeholder="Email" id="lEmail">
+        <br>
+        <input type="password" required placeholder="Password" id="lPassword">
+        <br>
+        <input type="submit">
+    </form>
+    <form id="signup">
+        <input type="text" required placeholder="Name"
+        id="sName">
+        <br>
+        <input type="email" required placeholder="Email"
+        id="sEmail">
+        <br>
+        <input type="password" required placeholder="Password"
+        id="sPassword">
+        <br>
+        <input type="password" required 
+        placeholder="Re-enter the password"
+        id="sPassword1">
+        <br>
+        <input type="submit">
+    </form>
+</body>
+</html>
+<script>
+  
+    let signUp = document.querySelector('.nav>button:nth-child(1)');
+    let logIn = document.querySelector('.nav>button:nth-child(2)');
+
+  
+    let logInForm = document.querySelector('#login')
+    let signUpForm = document.querySelector('#signup')
+
+    
+    signUp.addEventListener('click',function(){
+       
+        logInForm.style.display = 'none';
+        signUpForm.style.display = 'block';
+    })
+
+    logIn.addEventListener('click',function(){
+        logInForm.style.display = 'block';
+        signUpForm.style.display = 'none';
+    })
+
+  
+    let userDB = JSON.parse(localStorage.getItem('users'))||[];
+
+    signUpForm.addEventListener('submit',function(event){
+    
+        event.preventDefault();
+       
+        let formData = {
+            name: signUpForm.sName.value,
+            email: signUpForm.sEmail.value,
+            password: signUpForm.sPassword.value
+        }
+      
+        if(signUpForm.sPassword.value!=signUpForm.sPassword1.value){
+            alert('Passwords Mismatch!')
+        }
+        else{
+            let count = 0;
+            userDB.forEach(function(el){
+                if(el.email == formData.email){
+                    count++;
+                }
+            })
+            if(count>0){
+                alert('User Already Registered!')
+            }
+            else{
+             
+                userDB.push(formData);
+               
+                localStorage.setItem('users',JSON.stringify(userDB));
+                alert('registered successfully!')
+                window.location.assign('./Navbar.html')
+            }
+        }
+    })
+
+    logInForm.addEventListener('submit',function(event){
+       
+        event.preventDefault();
+       
+            let count = 0;
+            userDB.forEach(function(el){
+                if(el.email == logInForm.lEmail.value){
+                    count++;
+                }
+            })
+            if(count==0){
+                alert('user not found!');
+            }
+            else{
+                userDB.forEach(function(el){
+                if(el.email == logInForm.lEmail.value){
+                    if(el.password===logInForm.lPassword.value){
+                        alert("login successful!");
+                        window.location.assign('./Navbar.html');
+                    }
+                    else{
+                        alert('wrong crendentials!')
+                    }
+                }
+            })
+            }
+        
+    })
+</script>
