@@ -19,7 +19,3 @@ const swiper = new Swiper('.swiper', {
 
 });
 
-// let login = document.getElementById("login")
-// login.addEventListener("click",()=>{
-//     window.location.href="loginPage.html"
-// })

@@ -4,7 +4,7 @@
     <title>Login</title>
     <style>
         body{
-            background-color: aqua;
+            background-color: rgba(0, 255, 255, 0.501);
         }
         .nav{
             display: flex;
@@ -12,6 +12,7 @@
             gap: 10px;
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             padding: 15px;
+            background-color: #7CB342;
         }
         form{
             width: 300px;
@@ -84,7 +85,7 @@
 
   
     let userDB = JSON.parse(localStorage.getItem('users'))||[];
-
+     let user=""
     signUpForm.addEventListener('submit',function(event){
     
         event.preventDefault();
@@ -111,10 +112,12 @@
             else{
              
                 userDB.push(formData);
-               
+               user=userDB[userDB.length-1].name
                 localStorage.setItem('users',JSON.stringify(userDB));
                 alert('registered successfully!')
-                window.location.assign('./Navbar.html')
+                
+                window.location.assign("./productpage.html")
+                localStorage.setItem("user",userDB[userDB.length-1].name)
             }
         }
     })
@@ -137,7 +140,10 @@
                 if(el.email == logInForm.lEmail.value){
                     if(el.password===logInForm.lPassword.value){
                         alert("login successful!");
-                        window.location.assign('./Navbar.html');
+                       console.log(el.name)
+                        
+                        window.location.assign('./productpage.html');
+                        localStorage.setItem("user",el.name)
                     }
                     else{
                         alert('wrong crendentials!')
