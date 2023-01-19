@@ -5,22 +5,63 @@ let span=document.querySelector("span");
 span.textContent=username
 
 let url="https://fakestoreapi.com/products";
+// let fetcharr=[]
 
-function fetchdata(){
 fetch(url)
 .then((request)=>{
     console.log(request);
     return request.json()
 })
 .then((data)=>{
+    // fetcharr=data;
     console.log(data)
+   filterdata(data)
     display(data)
 })
 .catch((err)=>{
     console.log(err)
 })
+
+
+
+
+
+
+
+function filterdata(data){
+    let form=document.querySelector("form");
+
+    form.addEventListener("submit",(e)=>{
+       
+        e.preventDefault();
+       
+        let searchform=form.search.value;
+       //                              console.log(searchform)
+         let filtered=data.filter(el=>el.title.toLowerCase().includes(searchform.toLowerCase()))
+        //     // if(el.title.toUpperCase().includes(searchform.toUppercase())===true){
+        //     //     return el
+        //     // }
+        //     // else{
+        //     //     return false
+        //     // }
+        
+         display(filtered)
+         console.log(filtered)
+    
+    })
 }
-fetchdata()
+
+
+
+
+
+
+
+
+
+
+
+
 function display(data){
     let div=document.getElementById("container");
     div.innerHTML=null;
