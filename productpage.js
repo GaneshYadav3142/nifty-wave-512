@@ -3,6 +3,7 @@ console.log(username)
 let userDB=JSON.parse(localStorage.getItem("users"))
 let span=document.querySelector("span");
 span.textContent=username
+span.style.fontFamily="sans-serif"
 
 let url="https://fakestoreapi.com/products";
 // let fetcharr=[]
@@ -52,18 +53,22 @@ function filterdata(data){
 }
 
 
+let cart=document.getElementById("cart")
+cart.addEventListener("click",(e)=>{
+    e.preventDefault()
+    window.location.assign('./cartpage.html')
+})
 
 
 
 
 
 
-
-
-
+let CartDB=JSON.parse(localStorage.getItem("cartproduct"))||[];
+let div=document.getElementById("container");
 
 function display(data){
-    let div=document.getElementById("container");
+   
     div.innerHTML=null;
     data.forEach((el,i)=>{
         let card=document.createElement("div");
@@ -74,6 +79,8 @@ function display(data){
         let price=document.createElement("p");
         let desc=document.createElement("p");
         let rating=document.createElement("h4");
+        let addtocart=document.createElement("button")
+        addtocart.textContent="Add to Cart"
 
         img.src=el.image
         id.textContent=el.id;
@@ -83,7 +90,33 @@ function display(data){
         desc.textContent=el.desc
         rating.textContent=el.rating.rate;
 
-        card.append(img,id,category,title,price,rating,desc)
+
+
+      
+        addtocart.addEventListener("click",()=>{
+          
+            
+             if(duplicate(el)){
+                alert("Product Already in cart")
+             }
+             else{
+            CartDB.push({...el,quantity:1});
+            localStorage.setItem("cartproduct",JSON.stringify(CartDB))
+            alert("Product added to Cart")
+             }
+        })
+
+
+
+        card.append(img,id,category,title,price,rating,desc,addtocart)
         div.append(card)
     })
 }
+function duplicate(el){
+    for(let i=0;i<CartDB.length;i++){
+        if(CartDB[i].id===el.id){
+            return true
+        }
+    }
+    return false
+    }

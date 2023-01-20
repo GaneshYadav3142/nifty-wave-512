@@ -6,8 +6,9 @@
 .navv{
   width: 100%;
  position:fixed;
-  border: 2px solid purple ;
+  
   background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
  z-index: 2;
 } 
 #header1>ul{
@@ -16,7 +17,7 @@
      justify-content:right;
 }
 #header1{
-    border: 1px solid red;
+   
      height: 25px;
   padding: 5px 30px;
 }
@@ -26,7 +27,6 @@
     display: flex;
    justify-content: space-between;
     margin: auto;
-    border: 1px solid blue;
 }
 .menu,.search{
   width:35%;
@@ -35,7 +35,7 @@
 }
 #header2>div{
     
-    border: 1px solid blue;
+  
     align-items: center;
 }
 
@@ -109,6 +109,24 @@ li{
 
   #mid img{
     width: 100%;
+  }
+
+
+  #lower{
+   
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+   
+  }
+  #lower>div{
+    width:100%;
+   
+  }
+  #lower img{
+    width:100%
+  }
+ img :hover{
+   padding: 2px;
   }
   
  
