@@ -128,5 +128,38 @@ li{
  img :hover{
    padding: 2px;
   }
+  footer{
+    border: 2px solid red;
+    background-color: #2C4152;
+  }
+  #first{
+    display:flex;
+    width: 90%;
+    justify-content:space-between;
+    margin: auto;
+    padding: 50px;
+
+  }
+  p,h2{
+    font-family: sans-serif;
+    color: #ffffff;
+  }
+  #icon{
+    display: flex;
+    width:30%;
+    gap: 50px;
+    padding-top: 50px;
+  }
+  #icon>div{
+    width:30%
+  }
+  #icon img{
+   
+    width:100%
+  }
+  #icon>div:nth-child(3)>img{
+    padding-top: 30px;
+  }
+  
   
  

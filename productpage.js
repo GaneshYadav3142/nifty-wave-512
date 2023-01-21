@@ -5,7 +5,7 @@ let span=document.querySelector("span");
 span.textContent=username
 span.style.fontFamily="sans-serif"
 
-let url="https://fakestoreapi.com/products";
+let url="https://63c92f80c3e2021b2d515fda.mockapi.io/products";
 // let fetcharr=[]
 
 fetch(url)
@@ -78,17 +78,17 @@ function display(data){
         let category=document.createElement("h3");
         let price=document.createElement("p");
         let desc=document.createElement("p");
-        let rating=document.createElement("h4");
+        // let rating=document.createElement("h4");
         let addtocart=document.createElement("button")
         addtocart.textContent="Add to Cart"
 
-        img.src=el.image
+        img.src=el.avatar
         id.textContent=el.id;
         title.textContent=el.title
         category.textContent=el.category
         price.textContent="$"+el.price
-        desc.textContent=el.desc
-        rating.textContent=el.rating.rate;
+        desc.textContent=el.description
+        // rating.textContent=el.rating.rate;
 
 
 
@@ -108,7 +108,7 @@ function display(data){
 
 
 
-        card.append(img,id,category,title,price,rating,desc,addtocart)
+        card.append(img,id,category,title,price,desc,addtocart)
         div.append(card)
     })
 }
