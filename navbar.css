@@ -55,10 +55,15 @@ li{
     width:34px;
     height: 30px;
   }
-  input{
+  .search{
+    width:35%;
+      display: flex;
+      justify-content: space-between;
+  }
+  #search{
     width: 250px;
-    height: 35px;
-    border-radius: 15px;
+    height: 30px;
+    border-radius: 10px;
 
   background-color: antiquewhite;
   }
@@ -160,6 +165,7 @@ li{
   #icon>div:nth-child(3)>img{
     padding-top: 30px;
   }
+  
   
   
  
