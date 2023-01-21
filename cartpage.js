@@ -9,7 +9,7 @@ span.style.fontFamily="sans-serif";
 
 let logout=document.querySelector("#header2 button")
 logout.addEventListener("click",()=>{
-    window.location.assign("./Navbar.html")
+    window.location.assign("./index.html")
 })
 
 let CartDB=JSON.parse(localStorage.getItem("cartproduct"))||[];
@@ -43,7 +43,8 @@ let sum=0;
        let Remove=document.createElement("button")
        let increment=document.createElement("button")
        let decrement=document.createElement("button")
-
+       quantity.style.color="#ffffff";
+       quantity.style.padding="5px"
 
        quantity.textContent=el.quantity;
        Remove.textContent="Remove";
