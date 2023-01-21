@@ -14,11 +14,23 @@ logout.addEventListener("click",()=>{
 
 let CartDB=JSON.parse(localStorage.getItem("cartproduct"))||[];
 let div=document.getElementById("container");
+// let span1=document.querySelector("#cost");
+// span1.textContent=el.quantity*el.price
+let span1=document.querySelector("#cost");
 display(CartDB)
+
 function display(data){
-   
+    
     div.innerHTML=null;
+let sum=0;
+    data.forEach((el)=>{
+        sum+=el.quantity*el.price
+    })
+    span1.textContent="$"+sum;
+    span1.style.color="green"
+// span1.textContent=el.quantity*el.price
     data.forEach((el,i)=>{
+        
         let card=document.createElement("div");
         let id=document.createElement("h2")
         let title=document.createElement("h4");
@@ -26,7 +38,7 @@ function display(data){
         let category=document.createElement("h3");
         let price=document.createElement("p");
         let desc=document.createElement("p");
-        let rating=document.createElement("h4");
+        // let rating=document.createElement("h4");
        let quantity=document.createElement("span")
        let Remove=document.createElement("button")
        let increment=document.createElement("button")
@@ -37,13 +49,14 @@ function display(data){
        Remove.textContent="Remove";
        increment.textContent="+";
        decrement.textContent="-"
-        img.src=el.image
+        img.src=el.avatar
         id.textContent=el.id;
         title.textContent=el.title
         category.textContent=el.category
         price.textContent="$"+el.price
-        desc.textContent=el.desc
-        rating.textContent=el.rating.rate;
+        desc.textContent=el.description
+         
+        // rating.textContent=el.rating.rate;
         Remove.addEventListener("click",()=>{
            
           CartDB.splice(i,1)
@@ -70,7 +83,7 @@ decrement.addEventListener("click",()=>{
 
 
 
-        card.append(img,id,category,title,price,rating,desc,increment,quantity,decrement,Remove)
+        card.append(img,id,category,title,price,desc,increment,quantity,decrement,Remove)
         div.append(card)
     })
 }
