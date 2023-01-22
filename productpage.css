@@ -66,7 +66,7 @@ li{
   background-color: antiquewhite;
   }
   #container{
-    padding-top: 100px;
+    padding-top: 130px;
     display: grid;
     margin: auto;
     width: 90%;
@@ -105,7 +105,7 @@ li{
     color: #E53935;
   }
   footer{
-    border: 2px solid red;
+   
     background-color: #2C4152;
   }
   #first{
@@ -136,3 +136,9 @@ li{
   #icon>div:nth-child(3)>img{
     padding-top: 30px;
   }
+   #sort{
+   /* display: block; */
+   
+   align-content: center;
+   position:fixed;
+  } 

@@ -6,7 +6,7 @@ span.textContent=username
 span.style.fontFamily="sans-serif"
 
 let url="https://63c92f80c3e2021b2d515fda.mockapi.io/products";
-// let fetcharr=[]
+ let product=[]
 
 fetch(url)
 .then((request)=>{
@@ -15,7 +15,9 @@ fetch(url)
 })
 .then((data)=>{
     // fetcharr=data;
-    console.log(data)
+    // console.log(data)
+     product=[...data];
+     console.log(product)
    filterdata(data)
     display(data)
 })
@@ -120,3 +122,37 @@ function duplicate(el){
     }
     return false
     }
+
+    let sort = document.querySelector('#sort');
+    // we add event to it.
+    sort.addEventListener('change',function(event){
+        // get the value of selected sort condition
+        // we can get the value using event.target.value
+        if(event.target.value==='-'){
+            // we don't want to change anything.
+           
+        }
+        else{
+            if(event.target.value ==="priceAsc"){
+                // we get old data.
+                // here we are modifying the original productDB
+                // we already have productDB so we are not getting the old data again.
+                // we modify data
+                product.sort(function(a,b){
+                    return a.price-b.price;
+                })
+                // store the data
+               // localStorage.setItem('productDB',JSON.stringify(productDB));
+                // we update the display
+                display(product);
+            }
+            else if(event.target.value==="priceDes"){
+                // please finish this
+                product.sort(function(a,b){
+                    return b.price-a.price;
+                })
+                display(product);
+            }
+           
+        }
+    })
