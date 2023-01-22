@@ -97,7 +97,6 @@ li{
    border: 0px;
    background-color: #90CAF9;
    font-family: Impact,Charcoal,sans-serif;
-   /* margin-bottom: 0px; */
   }
   button:hover{
     background-color: #546E7A;
@@ -114,7 +113,6 @@ li{
     justify-content:space-between;
     margin: auto;
     padding: 50px;
-
   }
   p,h2{
     font-family: sans-serif;
@@ -130,15 +128,12 @@ li{
     width:30%
   }
   #icon img{
-   
-    width:100%
+   width:100%
   }
   #icon>div:nth-child(3)>img{
     padding-top: 30px;
   }
    #sort{
-   /* display: block; */
-   
    align-content: center;
    position:fixed;
   } 
