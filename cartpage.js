@@ -7,18 +7,22 @@ span.style.fontFamily="sans-serif";
 
 
 
-let logout=document.querySelector("#header2 button")
+let logout=document.querySelector("#out>button:nth-child(2)")
 logout.addEventListener("click",()=>{
     window.location.assign("./index.html")
 })
 
+ let checkout=document.querySelector("#out>button:nth-child(1)");
+ checkout.addEventListener("click",()=>{
+     window.location.assign("./payment.html")
+})
+
 let CartDB=JSON.parse(localStorage.getItem("cartproduct"))||[];
 let div=document.getElementById("container");
-// let span1=document.querySelector("#cost");
-// span1.textContent=el.quantity*el.price
 let span1=document.querySelector("#cost");
-display(CartDB)
 
+display(CartDB)
+let totalcart=(localStorage.setItem("totalcart"))
 function display(data){
     
     div.innerHTML=null;
@@ -27,8 +31,9 @@ let sum=0;
         sum+=el.quantity*el.price
     })
     span1.textContent="$"+sum;
-    span1.style.color="green"
-// span1.textContent=el.quantity*el.price
+    span1.style.color="green";
+     localStorage.setItem("totalcart",sum)
+     console.log(localStorage.setItem("totalcart",sum))
     data.forEach((el,i)=>{
         
         let card=document.createElement("div");
@@ -38,7 +43,6 @@ let sum=0;
         let category=document.createElement("h3");
         let price=document.createElement("p");
         let desc=document.createElement("p");
-        // let rating=document.createElement("h4");
        let quantity=document.createElement("span")
        let Remove=document.createElement("button")
        let increment=document.createElement("button")
@@ -56,16 +60,12 @@ let sum=0;
         category.textContent=el.category
         price.textContent="$"+el.price
         desc.textContent=el.description
-         
-        // rating.textContent=el.rating.rate;
         Remove.addEventListener("click",()=>{
-           
           CartDB.splice(i,1)
             localStorage.setItem("cartproduct",JSON.stringify(CartDB))
             console.log(CartDB)
             display(CartDB)
     })
-
 increment.addEventListener("click",()=>{
        el=el.quantity++
         localStorage.setItem("cartproduct",JSON.stringify(CartDB))
@@ -76,14 +76,6 @@ decrement.addEventListener("click",()=>{
      localStorage.setItem("cardproduct",JSON.stringify(CartDB))
      display(CartDB)}
 })
-
-
-
-
-        
-
-
-
         card.append(img,id,category,title,price,desc,increment,quantity,decrement,Remove)
         div.append(card)
     })

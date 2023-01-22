@@ -73,8 +73,7 @@
     let signUpForm = document.querySelector('#signup')
 
     
-    signUp.addEventListener('click',function(){
-       
+    signUp.addEventListener('click',function(){   
         logInForm.style.display = 'none';
         signUpForm.style.display = 'block';
     })
@@ -88,15 +87,12 @@
     let userDB = JSON.parse(localStorage.getItem('users'))||[];
      let user=""
     signUpForm.addEventListener('submit',function(event){
-    
-        event.preventDefault();
-       
+      event.preventDefault();
         let formData = {
             name: signUpForm.sName.value,
             email: signUpForm.sEmail.value,
             password: signUpForm.sPassword.value
         }
-      
         if(signUpForm.sPassword.value!=signUpForm.sPassword1.value){
             alert('Passwords Mismatch!')
         }
@@ -111,22 +107,17 @@
                 alert('User Already Registered!Click on Login')
             }
             else{
-             
                 userDB.push(formData);
                user=userDB[userDB.length-1].name
                 localStorage.setItem('users',JSON.stringify(userDB));
                 alert('Registered successfully!')
-                
                 window.location.assign("./productpage.html")
                 localStorage.setItem("user",userDB[userDB.length-1].name)
             }
         }
     })
-
     logInForm.addEventListener('submit',function(event){
-       
         event.preventDefault();
-       
             let count = 0;
             userDB.forEach(function(el){
                 if(el.email == logInForm.lEmail.value){
@@ -142,7 +133,6 @@
                     if(el.password===logInForm.lPassword.value){
                         alert("login successful!");
                        console.log(el.name)
-                        
                         window.location.assign('./productpage.html');
                         localStorage.setItem("user",el.name)
                     }
@@ -151,7 +141,6 @@
                     }
                 }
             })
-            }
-        
+            }  
     })
 </script>

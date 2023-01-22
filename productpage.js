@@ -25,12 +25,6 @@ fetch(url)
     console.log(err)
 })
 
-
-
-
-
-
-
 function filterdata(data){
     let form=document.querySelector("form");
 
@@ -41,30 +35,17 @@ function filterdata(data){
         let searchform=form.search.value;
        //                              console.log(searchform)
          let filtered=data.filter(el=>el.title.toLowerCase().includes(searchform.toLowerCase()))
-        //     // if(el.title.toUpperCase().includes(searchform.toUppercase())===true){
-        //     //     return el
-        //     // }
-        //     // else{
-        //     //     return false
-        //     // }
-        
          display(filtered)
          console.log(filtered)
     
     })
 }
 
-
 let cart=document.getElementById("cart")
 cart.addEventListener("click",(e)=>{
     e.preventDefault()
     window.location.assign('./cartpage.html')
 })
-
-
-
-
-
 
 let CartDB=JSON.parse(localStorage.getItem("cartproduct"))||[];
 let div=document.getElementById("container");
@@ -95,9 +76,7 @@ function display(data){
 
 
       
-        addtocart.addEventListener("click",()=>{
-          
-            
+    addtocart.addEventListener("click",()=>{
              if(duplicate(el)){
                 alert("Product Already in cart")
              }
@@ -107,9 +86,6 @@ function display(data){
             alert("Product added to Cart")
              }
         })
-
-
-
         card.append(img,id,category,title,price,desc,addtocart)
         div.append(card)
     })
@@ -122,7 +98,6 @@ function duplicate(el){
     }
     return false
     }
-
     let sort = document.querySelector('#sort');
     // we add event to it.
     sort.addEventListener('change',function(event){
@@ -141,18 +116,13 @@ function duplicate(el){
                 product.sort(function(a,b){
                     return a.price-b.price;
                 })
-                // store the data
-               // localStorage.setItem('productDB',JSON.stringify(productDB));
-                // we update the display
                 display(product);
             }
             else if(event.target.value==="priceDes"){
-                // please finish this
                 product.sort(function(a,b){
                     return b.price-a.price;
                 })
                 display(product);
-            }
-           
+            }         
         }
     })
