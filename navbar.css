@@ -21,19 +21,25 @@
   padding: 5px 30px;
 }
 #header2{
-  padding: 10px 20px;
+  border:1px solid red;
+  padding: 10px 15px;
     display: flex;
    justify-content: space-between;
     margin: auto;
 }
 .menu,.search{
+  border: 1px solid blue;
   width:35%;
     display: flex;
     justify-content: space-between;
 }
 #header2>div{
+ 
     align-items: center;
 }
+/* .logo{
+  width:100%
+} */
 
 li{
     display: inline;
@@ -44,8 +50,8 @@ li{
    color:black;
   font-family:sans-serif ; }
   .logo>img{
-    width: 130px;
-    height: 38px;
+    width: 100px;
+    height: 50px;
   }
   .search img{
     width:34px;
